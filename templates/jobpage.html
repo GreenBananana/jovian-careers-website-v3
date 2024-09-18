@@ -2,19 +2,28 @@
 <html>
   <head>
     <title>{{ job['title'] }} - Jovian Careers</title>
+    {%include 'bootstrap.html'%}
   </head>
   
   <body>
-    <h3>Title</h3>
-    <p>{{ job.title }}</p> 
-    <h3>Location</h3>
-    <p>{{ job.location }}</p> 
-    <h3>Salary</h3>
-    <p>{{ job.salary }} {{job.currency}}</p> 
-    <h3>Responsibilities</h3>
-    <p>{{ job.responsibilities }}</p>
-    <h3>Requirements</h3>
-    <p>{{ job.requirements }}</p> 
-    
+    {%include 'nav.html'%}
+    {%include 'banner.html'%}
+    <div class="container">
+      <h3>Title</h3>
+      <p>{{ job.title }}</p> 
+      <h3>Location</h3>
+      <p>{{ job.location }}</p> 
+      <h3>Salary</h3>
+      <p>{{ job.salary }} {{job.currency}}</p> 
+      <h3>Responsibilities</h3>
+        <ul>
+          {% for line in job.responsibilities.split("\n")%}
+            <li>{{line}}</li>
+          {%endfor%}
+        </ul>
+      <h3>Requirements</h3>
+      <p>{{ job.requirements }}</p> 
+    </div>
+    {%include 'footer.html'%}
   </body>
 </html>
