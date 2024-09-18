@@ -24,6 +24,11 @@ def show_job(id):
     return render_template('jobpage.html', job=job)
   else:
     return "Job not found", 404
+
+@app.rote("/job/<id>/apply")
+def apply_to_job(id):
+  job = load_job_from_db(id)
+  
     
 if __name__ == "__main__":
   app.run(host ='0.0.0.0', debug = True)
